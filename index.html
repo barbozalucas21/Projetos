@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Arroz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Para o amor da minha vida</h1>
+    <p>Palavras são poucas para descrever meu amor por você, então fiz um site...</p>
+    <button id="botaoRevelar">?????</button>
+    <div id="areafoto"></div>
+    <div id="contador"></div>
+
+    <script>
+        document.getElementById("botaoRevelar").addEventListener("click", function() {
+            document.getElementById("areafoto").innerHTML = "<img src='foto.jpg' width='300'> <p>Eis a melhor pessoa que aconteceu/apareceu na minha vida... Como sou eu sortudo e agraciado por receber de Deus meu maior presente, você.</p>";
+            criarCoracoes();
+            });
+
+        const inicio = new Date("2026-04-17T21:58:00");
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - inicio;
+
+            const dias = Math.floor(diferenca / (1000 * 60 *60 * 24));
+            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+            const segundos = Math.floor((diferenca / 1000) % 60);
+
+            document.getElementById("contador").innerHTML = 
+            dias + " dias, " + horas + " horas, " + minutos + " minutos e " + segundos + " segundos juntos";
+        }
+        setInterval(atualizarContador, 1000);
+
+        function criarCoracoes() {
+            for (let i = 0; i < 15; i++) {
+                const coracao = document.createElement("div");
+                coracao.className = "coracao";
+                coracao.innerHTML = "❤️";
+                coracao.style.left = Math.random() * 100 + "vw";
+                document.body.appendChild(coracao);
+
+                setTimeout(function(){
+                    coracao.remove();
+                }, 3000);
+            }
+        }
+        </script>
+  
+</body>
+</html>
